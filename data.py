@@ -118,12 +118,12 @@ class MatchingNetworkDatasetParallel(Dataset):
     def load_test_image(self, filepath):
         try:
             image = cv2.imread(filepath)
-            image = cv2.resize(image, dsize=(28, 28))
+            image = cv2.resize(image, dsize=(self.image_height, self.image_width))
         except RuntimeWarning:
             os.system("convert {} -strip {}".format(filepath, filepath))
             print("converting")
             image = cv2.imread(filepath)
-            image = cv2.resize(image, dsize=(28, 28))
+            image = cv2.resize(image, dsize=(self.image_height, self.image_width))
         except:
             print("Broken image")
             os.remove(filepath)
