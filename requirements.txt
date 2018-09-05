@@ -1,6 +1,6 @@
-tensorflow_gpu
-matplotlib
-tqdm
-scikit_image
-torch
-opencv-python
+tensorflow-gpu==1.10.1
+matplotlib==2.2.2
+tqdm==4.25.0
+scikit-image==0.14.0
+torch==0.4.1
+opencv-python==3.4.2.17

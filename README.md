@@ -70,6 +70,11 @@ experiment by passing the data provider to the ExperimentBuilder class and the s
 We've also very recently introduced the Full Context Embeddings version of matching networks properly implemented as
 explained in the paper. Please don't hesitate to ask questions.
 
+## Running in Docker
+The NVIDIA docker runtime is required: https://github.com/NVIDIA/nvidia-docker
+
+1. `docker build -t mataching .`
+2. `docker run -v $PWD/dockertest:/root/dockertest --runtime=nvidia --rm  matching /root/anaconda/envs/python3/bin/python train_one_shot_learning_matching_network.py --batch_size 32 --experiment_title dockertest --total_epochs 4 --full_context_unroll_k 5 --classes_per_set 20 --samples_per_class 1 --use_full_context_embeddings False --use_mean_per_class_embeddings False --dropout_rate_value 0.0`
 ## Acknowledgements
 Special thanks to https://github.com/zergylord for his Matching Networks
  implementation of which parts were used for this implementation. More
