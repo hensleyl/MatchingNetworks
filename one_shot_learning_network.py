@@ -67,7 +67,10 @@ class f_embedding_bidirectionalLSTM:
         :return: Returns the LSTM outputs, as well as the forward and backward hidden states.
         """
         b, k, h_g_dim = support_set_embeddings.get_shape().as_list()
+        print("h_g_dim = " + str(h_g_dim))
+        target_set_embeddings = tf.squeeze(tf.layers.average_pooling1d(tf.expand_dims(target_set_embeddings, -1), pool_size=25, strides=25))
         b, h_f_dim = target_set_embeddings.get_shape().as_list()
+        print("h_f_dim = " + str(h_f_dim))
         with tf.variable_scope(self.name, reuse=self.reuse):
             fw_lstm_cells_encoder = rnn.LSTMCell(num_units=self.layer_size, activation=tf.nn.tanh)
             attentional_softmax = tf.ones(shape=(b, k)) * (1.0/k)
